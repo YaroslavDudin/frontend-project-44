@@ -30,9 +30,9 @@ brain-games:
 	name: Java CI
 
 on:
-  - push
-  
-  - pull_request
+	- push
+
+	- pull_request
 
 jobs:
   build:
