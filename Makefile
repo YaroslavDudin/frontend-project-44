@@ -31,6 +31,7 @@ brain-games:
 
 on:
   - push
+  
   - pull_request
 
 jobs:
