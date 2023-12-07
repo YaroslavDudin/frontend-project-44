@@ -14,12 +14,10 @@ test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
 lint:
-	npx eslint .
+	npx eslint 
 
 publish:
 	npm publish
-
-.PHONY: test
 
 install:
 	npm	ci
@@ -27,4 +25,5 @@ install:
 brain-games:
 	node bin/brain-games.js
 
- 
+ publish:
+	npm publish --dry-run
