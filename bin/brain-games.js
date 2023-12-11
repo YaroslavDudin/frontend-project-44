@@ -1,9 +1,6 @@
 #!/usr/bin/env mode
-import  
-{name} from '../src/cli.js'
+import { name } from "../src/cli.js";
 // Wait for user's response.
-
- name
-
-
-
+import { uWu } from "../bin/brain-even.js";
+name;
+uWu;
