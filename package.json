@@ -4,7 +4,8 @@
   "description": "Node.js boilerplate package",
   "bin": {
     "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js"
+    "brain-even": "bin/brain-even.js",
+    "brain-calc": "bin/brain-calc.js"
   },
   "simple-git-hooks": {
     "pre-push": "make lint"
@@ -27,6 +28,7 @@
   "type": "module",
   "homepage": "https://github.com/hexlet-boilerplates/nodejs-package#readme",
   "dependencies": {
+    "asciinema-player": "^3.6.3",
     "babel-eslint": "^10.1.0",
     "debug": "^4.3.4",
     "eslint-config-prettier": "^9.1.0",
@@ -47,4 +49,3 @@
     "simple-git-hooks": "^2.8.1"
   }
 }
-

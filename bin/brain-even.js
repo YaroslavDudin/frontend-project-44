@@ -37,3 +37,4 @@ export function randomInteger(min, max) {
   
   gameEven();
   console.log(`Congratulations, ${name}!`);
+
