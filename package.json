@@ -1,11 +1,14 @@
 {
-  "name": "@hexlet/nodejs-package",
+  "name": "@hexlet/code",
   "version": "0.0.3",
   "description": "Node.js boilerplate package",
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js"
+    "brain-calc": "bin/brain-calc.js",
+    "brain-gcd": "bin/brain-gcd.js",
+    "brain-progression": "bin/brain-progression.js",
+    "brain-prime": "bin/brain-prime.js"
   },
   "simple-git-hooks": {
     "pre-push": "make lint"
@@ -28,21 +31,17 @@
   "type": "module",
   "homepage": "https://github.com/hexlet-boilerplates/nodejs-package#readme",
   "dependencies": {
-    "asciinema-player": "^3.6.3",
-    "babel-eslint": "^10.1.0",
     "debug": "^4.3.4",
-    "eslint-config-prettier": "^9.1.0",
+    "gradle": "^1.2.4",
     "lodash": "^4.17.21",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@jest/globals": "^29.6.0",
-    "eslint": "^8.55.0",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint": "^8.54.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-jest": "^27.2.2",
-    "eslint-plugin-react": "^7.33.2",
     "jest": "^29.6.0",
     "jest-cli": "^29.6.0",
     "npm-check-updates": "^16.10.11",
