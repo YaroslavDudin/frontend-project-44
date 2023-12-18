@@ -1,6 +1,8 @@
 import readlineSync from "readline-sync";
 import { name } from "../src/cli.js";
-
+export const uWu = (number) => {
+  return number % 2 === 0 ? "You are right" : "You lose";
+};
 
 export function randomInteger(min, max) {
     let rand = min + Math.random() * (max - min);
