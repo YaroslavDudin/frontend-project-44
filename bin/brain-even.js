@@ -1,40 +1,25 @@
-import readlineSync from "readline-sync";
-import { name } from "../src/cli.js";
-export const uWu = (number) => {
-  return number % 2 === 0 ? "You are right" : "You lose";
-};
+#!/usr/bin/env node
+import readlineSync from 'readline-sync';
+import
+// eslint-disable-next-line import/no-useless-path-segments
+{ name } from '../src/cli.js';
 
-export function randomInteger(min, max) {
-    let rand = min + Math.random() * (max - min);
-    return Math.round(rand);
+console.log('Answer "yes" if the number is even, otherwise answer "no".');
+let point = 0;
+for (let i = 0; i <= 2; i += 1) {
+  const rNum = Math.floor(Math.random() * 10);
+  console.log(`Question: ${rNum}`);
+  const question = readlineSync.question('Your answer: ');
+  if ((rNum % 2 === 0 && question.toLowerCase() === 'yes') || (rNum % 2 !== 0 && question.toLowerCase() === 'no')) {
+    console.log('Correct!');
+    point += 1;
+  } else {
+    console.log("yes' is wrong answer ;(. Correct answer was 'no'.");
+    console.log(`Let's try again, ${name}!`);
+    break;
   }
-  
-  function checkAnswer(answer, question) {
-    if (question % 2 === 0 ? answer === "yes" : answer === "no") {
-      console.log("correct");
-      return true;
-    } else {
-      console.log(`incorrect. Ohhh, please try again. The previous number was ${question}`);
-  
-      const userAnswer = readlineSync.question("Your answer: ");
-      return checkAnswer(userAnswer, question);
-    }
+  if (point === 3) {
+    console.log(`Congratulations, ${name}!`);
   }
-  
-  export default function gameEven() {
-    let correctCount = 0;
-    while (correctCount < 3) {
-      const question = randomInteger(1, 100);
-      const Question =
-        'Answer "yes" if the number is even, otherwise answer "no"';
-      console.log(`${Question}: ${question}`);
-      const userAnswer = readlineSync.question("Your answer: ");
-      if (checkAnswer(userAnswer, question)) {
-        correctCount += 1;
-      }
-    }
-  }
-  
-  gameEven();
-  console.log(`Congratulations, ${name}!`);
+}
 
