@@ -1,57 +1,47 @@
-import readlineSync from "readline-sync";
-import { name } from "../src/cli.js";
-const getRandomInt = (min, max) => {
-  const lower = Math.ceil(min);
-  const upper = Math.floor(max);
-  return Math.floor(Math.random() * (upper - lower + 1)) + lower;
-};
-name;
+#!/usr/bin/env node
+import readlineSync from 'readline-sync';
+import
+// eslint-disable-next-line import/no-useless-path-segments
+{ name } from '../src/cli.js';
 
-const generateQuestion = () => {
-  const num1 = getRandomInt(1, 100);
-  const num2 = getRandomInt(1, 100);
-  const operators = ["+", "-", "*"];
-  const operator = operators[getRandomInt(0, operators.length - 1)];
-  const question = `${num1} ${operator} ${num2}`;
-  return question;
-};
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-const calculate = (question) => {
-  const [num1, operator, num2] = question.split(" ");
-  switch (operator) {
-    case "+":
-      return parseInt(num1) + parseInt(num2);
-    case "-":
-      return parseInt(num1) - parseInt(num2);
-    case "*":
-      return parseInt(num1) * parseInt(num2);
-    default:
-      return null;
-  }
-};
-
-const playCalculator = (name) => {
-  console.log("What is the result of the expression?");
-  let correctAnswersCount = 0;
-  while (correctAnswersCount < 3) {
-    const question = generateQuestion();
-    console.log(`Question: ${question}`);
-    const userAnswer = readlineSync.question("Your answer: ");
-    const correctAnswer = calculate(question);
-    if (parseInt(userAnswer, 10) === correctAnswer) {
-      console.log("Correct!");
-      correctAnswersCount += 1;
-    } else {
-      console.log(
-        `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`
-      );
-      console.log(`Let's try again, ${name}!`);
+console.log('What is the result of the expression?');
+const sign = ['+', '-', '*'];
+const rndInt = randomIntFromInterval(0, 2);
+let point = 0;
+for (let i = 0; i <= 2; i += 1) {
+  const rNum1 = Math.floor(Math.random() * 10);
+  const rNum2 = Math.floor(Math.random() * 10);
+  let answer = 0;
+  // eslint-disable-next-line default-case
+  switch (sign[rndInt]) {
+    case '+':
+      console.log(`Question: ${rNum1} + ${rNum2} = `);
+      answer = (rNum1 + rNum2);
       break;
-    }
+    case '-':
+      console.log(`Question: ${rNum1} - ${rNum2} = `);
+      answer = (rNum1 - rNum2);
+      break;
+    case '*':
+      console.log(`Question: ${rNum1} * ${rNum2} = `);
+      answer = (rNum1 * rNum2);
+      break;
   }
-  if (correctAnswersCount === 3) {
+  let question = readlineSync.question('Your answer: ');
+  question = Number(question);
+  if (question === answer) {
+    console.log('Correct!');
+    point += 1;
+  } else {
+    console.log(`'${question}' is wrong answer ;(. Correct answer was '${answer}'.`);
+    console.log(`Let's try again, ${name}!`);
+    break;
+  }
+  if (point === 3) {
     console.log(`Congratulations, ${name}!`);
   }
-};
-console.log(playCalculator(name));
-export default playCalculator;
+}
