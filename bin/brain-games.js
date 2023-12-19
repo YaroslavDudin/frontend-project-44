@@ -1,4 +1,3 @@
-#!/usr/bin/env mode
-import { name } from "../src/cli.js";
-// Wait for user's response.
-
+#!/usr/bin/env node
+import
+{ name } from '../src/cli.js';
