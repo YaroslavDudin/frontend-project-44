@@ -10,10 +10,8 @@ for (let i = 0; i <= 2; i += 1) {
   const rNum2 = randomNumberGen(1, 9);
   const rNum3 = randomNumberGen(1, 5);
   const rNum1 = randomNumberGen(50, 100);
-  const arithmeticProgression = (n, lim) =>
-    
-    Array.from({ length: Math.ceil(lim / n) }, (_, j) => (j + 1) * n);
-  const randomArray = (arithmeticProgression(rNum2, rNum1));
+  const Prog = (n, lim) => Array.from({ length: Math.ceil(lim / n) }, (_, j) => (j + 1) * n);
+  const randomArray = (Prog(rNum2, rNum1));
   const lengthMin = (randomNumberGen(1, 4));
   const lengthMax = (lengthMin + 10);
   const slicedArray = randomArray.slice(lengthMin, lengthMax);
