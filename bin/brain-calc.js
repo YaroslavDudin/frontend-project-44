@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 import
 // eslint-disable-next-line import/no-useless-path-segments
 { name } from '../src/cli.js';
-
+import { point } from '../src/cli.js'
 function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -11,7 +11,6 @@ function randomIntFromInterval(min, max) {
 console.log('What is the result of the expression?');
 const sign = ['+', '-', '*'];
 const rndInt = randomIntFromInterval(0, 2);
-let point = 0;
 for (let i = 0; i <= 2; i += 1) {
   const rNum1 = Math.floor(Math.random() * 10);
   const rNum2 = Math.floor(Math.random() * 10);
@@ -33,15 +32,8 @@ for (let i = 0; i <= 2; i += 1) {
   }
   let question = readlineSync.question('Your answer: ');
   question = Number(question);
-  if (question === answer) {
-    console.log('Correct!');
-    point += 1;
-  } else {
-    console.log(`'${question}' is wrong answer ;(. Correct answer was '${answer}'.`);
-    console.log(`Let's try again, ${name}!`);
-    break;
-  }
-  if (point === 3) {
-    console.log(`Congratulations, ${name}!`);
-  }
+
+}
+const startGame = () => {
+point(rules,roundGenerate)
 }

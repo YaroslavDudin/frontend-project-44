@@ -4,6 +4,7 @@ import
 { name } from '../src/cli.js';
 
 let point = 0;
+
 console.log('What number is missing in the progression?');
 for (let i = 0; i <= 2; i += 1) {
   const randomNumberGen = (min, max) => Math.floor(Math.random() * (max - min)) + min;
@@ -16,17 +17,17 @@ for (let i = 0; i <= 2; i += 1) {
   const lengthMax = (lengthMin + 10);
   const slicedArray = randomArray.slice(lengthMin, lengthMax);
   const randomNumInArray1 = (slicedArray.length - rNum3);
-  const missingNumber = slicedArray[randomNumInArray1];
-  const indexNum = slicedArray.indexOf(missingNumber);
+  const answer = slicedArray[randomNumInArray1];
+  const indexNum = slicedArray.indexOf(answer);
   slicedArray[indexNum] = '..';
   console.log(`Question: ${slicedArray.join(' ')}`);
   let question = readlineSync.question('Your answer: ');
   question = Number(question);
-  if (question === missingNumber) {
+  if (question === answer) {
     console.log('Correct!');
     point += 1;
   } else {
-    console.log(`'${question}' is wrong answer ;(. Correct answer was '${missingNumber}'.`);
+    console.log(`'${question}' is wrong answer ;(. Correct answer was '${answer}'.`);
     console.log(`Let's try again, ${name}!`);
     break;
   }

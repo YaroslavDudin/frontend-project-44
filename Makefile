@@ -38,4 +38,7 @@ brain-progression:
 	node bin/brain-progression.js
 
 brain-prime:
-	node bin/brain-prime.js	
+	node bin/brain-prime.js
+
+cli:
+	node /home/student161/frontend-project-44/src/cli.js
