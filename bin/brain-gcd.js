@@ -1,41 +1,25 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import {
-  // eslint-disable-next-line import/no-useless-path-segments
-  name,
-} from '../src/cli.js';
 
-console.log('Find the greatest common divisor of given numbers.');
-let point = 0;
+import { playGame, getRandomNumber } from './utils.js';
 
-for (let i = 0; i <= 2; i += 1) {
-  const randomNumberGen = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-  const rNum1 = randomNumberGen(1, 100);
-  const rNum2 = randomNumberGen(1, 100);
-  let answer = 0;
-  let hcf;
-  // eslint-disable-next-line no-plusplus
-  for (let h = 1; h <= rNum1 && h <= rNum2; h++) {
-    if (rNum1 % h === 0 && rNum2 % h === 0) {
-      hcf = h;
-    }
-  }
+const rules = 'Find the greatest common divisor of given numbers.';
 
-  console.log(`Question: ${rNum1} ${rNum2}`);
-  answer = hcf;
-  let question = readlineSync.question('Your answer: ');
-  question = Number(question);
-  if (question === answer) {
-    console.log('Correct!');
-    point += 1;
-  } else {
-    console.log(
-      `'${question}' is wrong answer ;(. Correct answer was '${answer}'.`,
-    );
-    console.log(`Let's try again, ${name}!`);
-    break;
-  }
-  if (point === 3) {
-    console.log(`Congratulations, ${name}!`);
-  }
-}
+const calculateGCD = (num1, num2) => {
+  if (num2 > num1) return calculateGCD(num2, num1);
+  if (!num2) return num1;
+  return calculateGCD(num2, num1 % num2);
+};
+
+const generateRound = () => {
+  const generateNumber1 = getRandomNumber(1, 50);
+  const generateNumber2 = getRandomNumber(1, 50);
+  const question = `${generateNumber1} ${generateNumber2}`;
+  const correctAnswer = calculateGCD(generateNumber1, generateNumber2).toString();
+  return [question, correctAnswer];
+};
+
+const startBrainGCD = () => {
+  playGame(rules, generateRound);
+};
+
+startBrainGCD();

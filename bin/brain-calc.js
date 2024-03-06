@@ -1,39 +1,34 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import
-// eslint-disable-next-line import/no-useless-path-segments
-{ name } from '../src/cli.js';
-import { point } from '../src/cli.js'
-function randomIntFromInterval(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import { playGame, getRandomNumber } from './utils.js';
 
-console.log('What is the result of the expression?');
-const sign = ['+', '-', '*'];
-const rndInt = randomIntFromInterval(0, 2);
-for (let i = 0; i <= 2; i += 1) {
-  const rNum1 = Math.floor(Math.random() * 10);
-  const rNum2 = Math.floor(Math.random() * 10);
-  let answer = 0;
-  // eslint-disable-next-line default-case
-  switch (sign[rndInt]) {
+const rules = 'What is the result of the expression?';
+
+const getCorrectAnswer = (num1, sign, num2) => {
+  switch (sign) {
     case '+':
-      console.log(`Question: ${rNum1} + ${rNum2} = `);
-      answer = (rNum1 + rNum2);
-      break;
+      return num1 + num2;
     case '-':
-      console.log(`Question: ${rNum1} - ${rNum2} = `);
-      answer = (rNum1 - rNum2);
-      break;
+      return num1 - num2;
     case '*':
-      console.log(`Question: ${rNum1} * ${rNum2} = `);
-      answer = (rNum1 * rNum2);
-      break;
+      return num1 * num2;
+    default:
+      return null;
   }
-  let question = readlineSync.question('Your answer: ');
-  question = Number(question);
+};
 
-}
-const startGame = () => {
-point(rules,roundGenerate)
-}
+const generateRound = () => {
+  const mathOperator = ['+', '-', '*'];
+  const getMathOperator = mathOperator[getRandomNumber(0, mathOperator.length - 1)];
+  const number1 = getRandomNumber(1, 50);
+  const number2 = getRandomNumber(1, 50);
+  const question = `${number1} ${getMathOperator} ${number2}`;
+  const correctAnswer = getCorrectAnswer(number1, getMathOperator, number2).toString();
+  return [question, correctAnswer];
+};
+
+const startBrainCalc = () => {
+  playGame(rules, generateRound);
+};
+
+// eslint-disable-next-line eol-last
+startBrainCalc();
